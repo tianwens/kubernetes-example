@@ -10,8 +10,8 @@ frontend:
 #   autoscaling:
 #     averageUtilization: 50
 
-database:
-  enabled: false
-  uri: 10.10.10.10
-  username: external_postgres
-  password: external_postgres
+# database:
+#   enabled: false
+#   uri: 10.10.10.10
+#   username: external_postgres
+#   password: external_postgres

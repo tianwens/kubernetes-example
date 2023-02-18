@@ -30,7 +30,7 @@ jobs:
       - name: Check outputs
         run: echo ${{ steps.vars.outputs.sha_short }}  # 测试打印看一下是否正常
 
-      # 本次后端总是报程序的错误（https://127.0.0.1:8080/上可以看到日志：RuntimeError: A 'SQLAlchemy' instance has already been registered on this Flask app. Import and use that instance instead.）导致pod起不来，先不查原因，先略过，先不弄后端的，注释掉后端的，不影响整体测试GitOps工作流
+      # 本次后端总是报程序的错误（https://127.0.0.1:8080/上可以看到日志：RuntimeError: A 'SQLAlchemy' instance has already been registered on this Flask app. Import and use that instance instead.）导致pod起不来，先不查原因，先略过，先不弄后端的，注释掉后端的（也其它文件把数据的也先去掉），不影响整体测试GitOps工作流
       # - name: Build backend and push
       #   uses: docker/build-push-action@v3
       #   with:

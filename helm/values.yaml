@@ -8,9 +8,9 @@ frontend:
 #   # tag: '1276e23'
 #   autoscaling:
 #     averageUtilization: 90
-database:
-  enabled: true
-  uri: pg-service
-  username: postgres
-  password: postgres
-  
+# database:
+#   enabled: true
+#   uri: pg-service
+#   username: postgres
+#   password: postgres
+#
