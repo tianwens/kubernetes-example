@@ -1,12 +1,12 @@
 frontend:
   image: tianwens/frontend
-  tag: latest
+  # tag: latest
   autoscaling:
     averageUtilization: 50
 
 backend:
   image: tianwens/backend
-  tag: latest
+  # tag: latest
   autoscaling:
     averageUtilization: 50
 

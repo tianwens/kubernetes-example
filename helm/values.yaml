@@ -1,11 +1,11 @@
 frontend:
   image: tianwens/frontend
-  tag: '1276e23'
+  # tag: '1276e23'
   autoscaling:
     averageUtilization: 90
 backend:
   image: tianwens/backend
-  tag: '1276e23'
+  # tag: '1276e23'
   autoscaling:
     averageUtilization: 90
 database:
