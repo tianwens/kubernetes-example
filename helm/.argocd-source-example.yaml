@@ -4,13 +4,9 @@ helm:
     value: tianwens/frontend
     forcestring: true
   - name: frontend.tag
-    # value: "2682590"
     value: latest
-    # forcestring: true
-  # - name: backend.image
-  #   value: tianwens/backend
-  #   forcestring: true
-  # - name: backend.tag
-  #   # value: "2682590"
-  #   value: latest
-  #   # forcestring: true
+  - name: backend.image
+    value: tianwens/backend
+    forcestring: true
+  - name: backend.tag
+    value: latest
