@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Set outputs
         id: vars
+        # run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
         run: echo "sha_short=`git rev-parse --short HEAD`" >> $GITHUB_OUTPUT
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -26,8 +27,6 @@ jobs:
         with:
           username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Check outputs
-        run: echo ${{ steps.vars.outputs.sha_short }}  # 测试打印看一下是否正常
       - name: Build backend and push
         uses: docker/build-push-action@v3
         with:
@@ -35,8 +34,7 @@ jobs:
           push: true
           # platforms: linux/amd64,linux/arm64
           platforms: linux/amd64
-          # tags: ${{ env.DOCKERHUB_USERNAME }}/backend:${{ steps.vars.outputs.sha_short }}
-          tags: ${{ env.DOCKERHUB_USERNAME }}/backend
+          tags: ${{ env.DOCKERHUB_USERNAME }}/backend:${{ steps.vars.outputs.sha_short }}
       - name: Build frontend and push
         uses: docker/build-push-action@v3
         with:
@@ -44,8 +42,7 @@ jobs:
           push: true
           # platforms: linux/amd64,linux/arm64
           platforms: linux/amd64
-          # tags: ${{ env.DOCKERHUB_USERNAME }}/frontend:${{ steps.vars.outputs.sha_short }}
-          tags: ${{ env.DOCKERHUB_USERNAME }}/frontend
+          tags: ${{ env.DOCKERHUB_USERNAME }}/frontend:${{ steps.vars.outputs.sha_short }}
       # - name: Update helm values.yaml
       #   uses: fjogeleit/yaml-update-action@main
       #   with:
