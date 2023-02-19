@@ -43,16 +43,20 @@ jobs:
           # platforms: linux/amd64,linux/arm64
           platforms: linux/amd64
           tags: ${{ env.DOCKERHUB_USERNAME }}/frontend:${{ steps.vars.outputs.sha_short }}
-      - name: Update helm values.yaml
-        uses: fjogeleit/yaml-update-action@main
-        with:
-          valueFile: 'helm/values.yaml'
-          commitChange: true
-          branch: main
-          updateFile: true
-          message: 'Update Image Version to ${{ steps.vars.outputs.sha_short }}'
-          changes: |
-            {
-              "backend.tag": "${{ steps.vars.outputs.sha_short }}",
-              "frontend.tag": "${{ steps.vars.outputs.sha_short }}"
-            }
+
+      # #以下在新版本的github action中已废弃，报错类似，意思是不要添加如下，github action集成了该功能，删除如下或注释掉即正常：
+      # # updateFile is deprected, the updated content will be written to the file by default from now on
+      # # Error: HttpError: Resource not accessible by integration
+      # - name: Update helm values.yaml
+      #   uses: fjogeleit/yaml-update-action@main
+      #   with:
+      #     valueFile: 'helm/values.yaml'
+      #     commitChange: true
+      #     branch: main
+      #     updateFile: true
+      #     message: 'Update Image Version to ${{ steps.vars.outputs.sha_short }}'
+      #     changes: |
+      #       {
+      #         "backend.tag": "${{ steps.vars.outputs.sha_short }}",
+      #         "frontend.tag": "${{ steps.vars.outputs.sha_short }}"
+      #       }
