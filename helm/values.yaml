@@ -1,0 +1,17 @@
+frontend:
+  image: tianwens/frontend
+  # 模拟实际工作，这里指定个固定tag的镜像来测试
+  tag: '4d2bdc2'
+  autoscaling:
+    averageUtilization: 90
+backend:
+  image: tianwens/backend
+  # 模拟实际工作，这里指定个固定tag的镜像来测试
+  tag: '4d2bdc2'
+  autoscaling:
+    averageUtilization: 90
+database:
+  enabled: true
+  uri: pg-service
+  username: postgres
+  password: postgres
